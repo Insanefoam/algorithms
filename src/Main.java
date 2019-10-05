@@ -2,13 +2,15 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        JhonsonProtter tmp = new JhonsonProtter();
-        tmp.body(1);
+        //JhonsonProtter tmp = new JhonsonProtter();
+        //tmp.body(1);
         //Horspul tmp2 = new Horspul();
         //System.out.println(tmp2.body("dwacdwadwa", "adw"));
         //Brute brute = new Brute();
         //System.out.println(brute.body("dwacdwadwa", "adw"));
-        substringTest();
+        //substringTest();
+        Haffman haffman = new Haffman();
+        haffman.body("beep boop beer!");
     }
 
     public static void substringTest() {
