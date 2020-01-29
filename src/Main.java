@@ -1,16 +1,45 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        //JhonsonProtter tmp = new JhonsonProtter();
-        //tmp.body(1);
-        //Horspul tmp2 = new Horspul();
-        //System.out.println(tmp2.body("dwacdwadwa", "adw"));
-        //Brute brute = new Brute();
-        //System.out.println(brute.body("dwacdwadwa", "adw"));
-        //substringTest();
-        Haffman haffman = new Haffman();
-        haffman.body("beep boop beer!");
+    public static void main(String[] args) throws FileNotFoundException {
+        int[] values1 = readFromFile("numbers1.txt");
+        HashTable hashTable1 = new HashTable(11);
+        for (int a : values1) {
+            hashTable1.putInTable(a);
+        }
+        System.out.println(hashTable1);
+        hashTable1.removeFromTable(77);
+        System.out.println(hashTable1);
+
+        int[] values2 = readFromFile("numbers2.txt");
+        HashTable hashTable2 = new HashTable(11);
+        for (int a : values2) {
+            hashTable2.putInTable(a);
+        }
+        System.out.println(hashTable2);
+        System.out.println(hashTable2.getIdByValue(321));
+        System.out.println(hashTable2.removeFromTable(321));
+        System.out.println("Количество сравнений в первой таблице: " + hashTable1.compares);
+        System.out.println("Количество сравнений во второй таблице: " + hashTable2.compares);
+    }
+
+    public static int[] readFromFile(String fileName) throws FileNotFoundException {
+        File file = new File(fileName);
+        Scanner scanner = new Scanner(file);
+        String str = "";
+        while (scanner.hasNextLine()) {
+            str = str.concat(scanner.nextLine() + " ");
+        }
+        String[] stringedValues = str.split(" ");
+        int[] values = new int[stringedValues.length];
+        for (int i = 0; i < stringedValues.length; i++) {
+            values[i] = Integer.parseInt(stringedValues[i]);
+        }
+        return values;
     }
 
     public static void substringTest() {
